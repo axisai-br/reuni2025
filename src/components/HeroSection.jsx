@@ -72,25 +72,25 @@ const HeroSection = () => {
           <div className="grid-responsive grid-auto-fit">
             <div className="stat-card group">
               <div className="flex items-center justify-center mb-3">
-                <TrendingUp className="w-8 h-8 text-orange-primary" />
+                <TrendingDown className="w-8 h-8 text-orange-primary" />
               </div>
               <div className="stat-number">
-                <AnimatedCounter end={33} suffix="%" />
+                <AnimatedCounter end={35.1} suffix="%" decimals={1} />
               </div>
               <div className="text-body-md text-gray-200 font-inter">
-                Redução no turnover de PCDs
+                Saída por saúde/motivo pessoal
               </div>
               <div className="text-xs text-orange-primary/80 mt-1 font-medium">
                 Dados da pesquisa PCDs
               </div>
             </div>
-            
+
             <div className="stat-card group">
               <div className="flex items-center justify-center mb-3">
                 <Users className="w-8 h-8 text-blue-support" />
               </div>
               <div className="stat-number">
-                <AnimatedCounter end={25} suffix="%" />
+                <AnimatedCounter end={24.3} suffix="%" decimals={1} />
               </div>
               <div className="text-body-md text-gray-200 font-inter">
                 PCDs com 1-2 anos na empresa
@@ -99,16 +99,16 @@ const HeroSection = () => {
                 Dados da pesquisa PCDs
               </div>
             </div>
-            
+
             <div className="stat-card group">
               <div className="flex items-center justify-center mb-3">
                 <Award className="w-8 h-8 text-green-support" />
               </div>
               <div className="stat-number">
-                <AnimatedCounter end={28} suffix="%" />
+                <AnimatedCounter end={16.7} suffix="%" decimals={1} />
               </div>
               <div className="text-body-md text-gray-200 font-inter">
-                Mais receita em empresas inclusivas
+                Empresas com programas de inclusão estruturados
               </div>
               <div className="text-xs text-green-support/80 mt-1 font-medium">
                 Dados da pesquisa empresas

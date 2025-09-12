@@ -99,37 +99,37 @@ const BenefitSection = () => {
             <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
               <div className="text-center">
                 <div className="text-3xl md:text-4xl font-bold mb-2">
-                  <AnimatedCounter end={25} suffix="%" />
+                  <AnimatedCounter end={24.3} suffix="%" decimals={1} />
                 </div>
                 <div className="text-sm text-orange-100">
                   PCDs com 1-2 anos na empresa
                 </div>
               </div>
-              
+
               <div className="text-center">
                 <div className="text-3xl md:text-4xl font-bold mb-2">
-                  <AnimatedCounter end={69} suffix="%" />
+                  <AnimatedCounter end={45.9} suffix="%" decimals={1} />
                 </div>
                 <div className="text-sm text-orange-100">
                   Saída por Salário/Carreira
                 </div>
               </div>
-              
+
               <div className="text-center">
                 <div className="text-3xl md:text-4xl font-bold mb-2">
-                  <AnimatedCounter end={28} suffix="%" />
+                  <AnimatedCounter end={16.7} suffix="%" decimals={1} />
                 </div>
                 <div className="text-sm text-orange-100">
-                  Mais Receita em Empresas Inclusivas
+                  Programas de inclusão estruturados
                 </div>
               </div>
-              
+
               <div className="text-center">
                 <div className="text-3xl md:text-4xl font-bold mb-2">
-                  <AnimatedCounter end={25} suffix="%" />
+                  <AnimatedCounter end={33.3} suffix="%" decimals={1} />
                 </div>
                 <div className="text-sm text-orange-100">
-                  Aumento de Produtividade
+                  Empresas com menos de 100 colaboradores
                 </div>
               </div>
             </div>
