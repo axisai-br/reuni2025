@@ -7,42 +7,42 @@ import AnimatedCounter from './AnimatedCounter';
 const DataSection = () => {
   // Dados do formulário - Perfil das Empresas
   const sectorData = [
-    { name: 'Saúde', value: 11.1, color: '#e65100' },
-    { name: 'Indústria', value: 44.4, color: '#1976d2' },
-    { name: 'Serviços', value: 11.1, color: '#388e3c' },
-    { name: 'Varejo', value: 11.1, color: '#ff8a00' },
-    { name: 'Outros', value: 22.3, color: '#4a5568' }
+    { name: 'Indústrias', value: 41.7, color: '#1976d2' },
+    { name: 'Varejo', value: 16.7, color: '#ff8a00' },
+    { name: 'Tecnologia', value: 8.3, color: '#388e3c' },
+    { name: 'Saúde', value: 8.3, color: '#e65100' },
+    { name: 'Outros', value: 25.0, color: '#4a5568' }
   ];
 
   const companySizeData = [
-    { size: '10-99', percentage: 11.1, fill: '#e65100' },
-    { size: '100-999', percentage: 22.2, fill: '#1976d2' },
-    { size: '1.000-4.999', percentage: 33.3, fill: '#388e3c' },
-    { size: '5.000+', percentage: 33.3, fill: '#ff8a00' }
+    { size: '<100', percentage: 33.3, fill: '#e65100' },
+    { size: '100-499', percentage: 33.3, fill: '#1976d2' },
+    { size: '500-999', percentage: 25.0, fill: '#388e3c' },
+    { size: '5.000+', percentage: 8.3, fill: '#ff8a00' }
   ];
 
   const pcdHiringData = [
-    { period: 'Sim, com carteira', percentage: 52.8, fill: '#e65100' },
-    { period: 'Sim, informal', percentage: 5.6, fill: '#1976d2' },
-    { period: 'Não empregado', percentage: 41.7, fill: '#388e3c' }
+    { period: 'Sim, com carteira', percentage: 40.5, fill: '#e65100' },
+    { period: 'Sim, informal', percentage: 8.1, fill: '#1976d2' },
+    { period: 'Não empregado', percentage: 51.4, fill: '#388e3c' }
   ];
 
   const challengesData = [
-    { challenge: 'Salário baixo/proposta melhor', percentage: 36.1, fill: '#e65100' },
-    { challenge: 'Falta de plano de carreira/crescimento', percentage: 33.3, fill: '#1976d2' },
-    { challenge: 'Liderança/ambiente de trabalho', percentage: 11.1, fill: '#388e3c' },
-    { challenge: 'Acessibilidade insuficiente', percentage: 8.3, fill: '#ff8a00' },
-    { challenge: 'Transporte/deslocamento', percentage: 5.6, fill: '#42a5f5' },
-    { challenge: 'Saúde/motivo pessoal', percentage: 5.6, fill: '#66bb6a' }
+    { challenge: 'Saúde/motivo pessoal', percentage: 35.1, fill: '#66bb6a' },
+    { challenge: 'Salário baixo/proposta melhor', percentage: 32.4, fill: '#e65100' },
+    { challenge: 'Falta de plano de carreira/crescimento', percentage: 13.5, fill: '#1976d2' },
+    { challenge: 'Liderança/ambiente de trabalho', percentage: 8.1, fill: '#388e3c' },
+    { challenge: 'Transporte/deslocamento', percentage: 5.4, fill: '#42a5f5' },
+    { challenge: 'Acessibilidade insuficiente', percentage: 5.4, fill: '#ff8a00' }
   ];
 
   const turnoverReasons = [
-    { reason: 'Salário baixo/proposta melhor', percentage: 36.1, color: '#e65100' },
-    { reason: 'Falta de plano de carreira/crescimento', percentage: 33.3, color: '#1976d2' },
-    { reason: 'Liderança/ambiente de trabalho', percentage: 11.1, color: '#388e3c' },
-    { reason: 'Acessibilidade insuficiente', percentage: 8.3, color: '#ff8a00' },
-    { reason: 'Transporte/deslocamento', percentage: 5.6, color: '#42a5f5' },
-    { reason: 'Saúde/motivo pessoal', percentage: 5.6, color: '#66bb6a' }
+    { reason: 'Saúde/motivo pessoal', percentage: 35.1, color: '#66bb6a' },
+    { reason: 'Salário baixo/proposta melhor', percentage: 32.4, color: '#e65100' },
+    { reason: 'Falta de plano de carreira/crescimento', percentage: 13.5, color: '#1976d2' },
+    { reason: 'Liderança/ambiente de trabalho', percentage: 8.1, color: '#388e3c' },
+    { reason: 'Transporte/deslocamento', percentage: 5.4, color: '#42a5f5' },
+    { reason: 'Acessibilidade insuficiente', percentage: 5.4, color: '#ff8a00' }
   ];
 
   const CustomTooltip = ({ active, payload, label }) => {
@@ -81,7 +81,7 @@ const DataSection = () => {
               <CardContent className="p-6 text-center">
                 <Building2 className="h-8 w-8 text-orange-primary mx-auto mb-3" />
                 <div className="text-3xl font-bold stat-number mb-2">
-                  <AnimatedCounter end={52.8} suffix="%" decimals={1} />
+                  <AnimatedCounter end={40.5} suffix="%" decimals={1} />
                 </div>
                 <div className="text-sm text-gray-medium">PCDs empregados com carteira</div>
               </CardContent>
@@ -91,7 +91,7 @@ const DataSection = () => {
               <CardContent className="p-6 text-center">
                 <Users className="h-8 w-8 text-green-support mx-auto mb-3" />
                 <div className="text-3xl font-bold text-green-support mb-2">
-                  <AnimatedCounter end={36.1} suffix="%" decimals={1} />
+                  <AnimatedCounter end={10.8} suffix="%" decimals={1} />
                 </div>
                 <div className="text-sm text-gray-medium">PCDs com Superior Completo</div>
               </CardContent>
@@ -101,7 +101,7 @@ const DataSection = () => {
               <CardContent className="p-6 text-center">
                 <Clock className="h-8 w-8 text-blue-support mx-auto mb-3" />
                 <div className="text-3xl font-bold text-blue-support mb-2">
-                  <AnimatedCounter end={58.3} suffix="%" decimals={1} />
+                  <AnimatedCounter end={56.8} suffix="%" decimals={1} />
                 </div>
                 <div className="text-sm text-gray-medium">Limitação Física/Motora</div>
               </CardContent>
@@ -111,9 +111,9 @@ const DataSection = () => {
               <CardContent className="p-6 text-center">
                 <TrendingDown className="h-8 w-8 text-orange-primary mx-auto mb-3" />
                 <div className="text-3xl font-bold stat-number mb-2">
-                  <AnimatedCounter end={36.1} suffix="%" decimals={1} />
+                  <AnimatedCounter end={35.1} suffix="%" decimals={1} />
                 </div>
-                <div className="text-sm text-gray-medium">Saída por Salário Baixo</div>
+                <div className="text-sm text-gray-medium">Saída por Saúde/Motivo Pessoal</div>
               </CardContent>
             </Card>
           </div>
@@ -179,7 +179,7 @@ const DataSection = () => {
             <Card className="chart-container">
               <CardHeader>
                 <CardTitle className="text-xl font-bold text-gray-dark">
-                  Vagas Abertas para PCDs
+                  Situação de Emprego dos PCDs
                 </CardTitle>
               </CardHeader>
               <CardContent>
@@ -189,7 +189,7 @@ const DataSection = () => {
                     <XAxis dataKey="period" tick={{ fill: '#4a5568', fontSize: 12 }} />
                     <YAxis tick={{ fill: '#4a5568' }} />
                     <Tooltip content={<CustomTooltip />} />
-                    <Bar dataKey="empresas" name="% Empresas" radius={[4, 4, 0, 0]} />
+                    <Bar dataKey="percentage" name="% Pessoas" radius={[4, 4, 0, 0]} />
                   </BarChart>
                 </ResponsiveContainer>
               </CardContent>
@@ -231,28 +231,28 @@ const DataSection = () => {
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 text-center">
                 <div className="space-y-2">
                   <div className="text-3xl font-bold stat-number">
-                    <AnimatedCounter end={41.7} suffix="%" decimals={1} />
+                    <AnimatedCounter end={5.4} suffix="%" decimals={1} />
                   </div>
                   <div className="text-sm text-gray-medium">Têm menos de 20 anos</div>
                 </div>
                 
                 <div className="space-y-2">
                   <div className="text-3xl font-bold text-green-support">
-                    <AnimatedCounter end={36.1} suffix="%" decimals={1} />
+                    <AnimatedCounter end={10.8} suffix="%" decimals={1} />
                   </div>
                   <div className="text-sm text-gray-medium">Superior Completo</div>
                 </div>
                 
                 <div className="space-y-2">
                   <div className="text-3xl font-bold text-blue-support">
-                    <AnimatedCounter end={58.3} suffix="%" decimals={1} />
+                    <AnimatedCounter end={56.8} suffix="%" decimals={1} />
                   </div>
-                  <div className="text-sm text-gray-medium">Limitação Intelectual</div>
+                  <div className="text-sm text-gray-medium">Limitação Física/Motora</div>
                 </div>
                 
                 <div className="space-y-2">
                   <div className="text-3xl font-bold stat-number">
-                    <AnimatedCounter end={52.8} suffix="%" decimals={1} />
+                    <AnimatedCounter end={40.5} suffix="%" decimals={1} />
                   </div>
                   <div className="text-sm text-gray-medium">Empregados com carteira</div>
                 </div>

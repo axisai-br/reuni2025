@@ -101,7 +101,6 @@ const InteractiveSection = () => {
   const calculateROI = () => {
     const revenue = parseFloat(calculatorData.revenue) || 0;
     const employees = parseInt(calculatorData.employees) || 0;
-    const turnover = parseFloat(calculatorData.turnover) || 0;
 
     const revenueIncrease = revenue * 1.6; // 1.6x mais receita (Pesquisa Empresas)
     const profitIncrease = revenue * 2.6; // 2.6x mais lucro líquido (Pesquisa Empresas)
