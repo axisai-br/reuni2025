@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Menu, X, Accessibility } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { Link, NavLink } from 'react-router-dom';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -13,35 +14,37 @@ const Header = () => {
   };
 
   const menuItems = [
-    { href: '#impacto', label: 'Impacto' },
-    { href: '#casos', label: 'Casos de Sucesso' },
-    { href: '#dados', label: 'Dados' },
-    { href: '#solucoes', label: 'Soluções' },
-    { href: '#contato', label: 'Contato' }
+    { to: '/impacto', label: 'Impacto' },
+    { to: '/casos', label: 'Casos de Sucesso' },
+    { to: '/dados', label: 'Dados' },
+    { to: '/metodologia', label: 'Metodologia' },
+    { to: '/contato', label: 'Contato' }
   ];
 
   return (
-    <header className="bg-white shadow-sm fixed w-full top-0 z-50">
+    <header className="fixed w-full top-0 z-50 backdrop-blur-md bg-white/70 border-b border-white/40">
       <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
           <div className="flex-shrink-0">
-            <h1 className="text-2xl font-bold text-orange-primary font-open-sans">
-              Inclusão PCD
+            <Link to="/" className="block">
+            <h1 className="text-2xl font-bold text-gray-800 font-open-sans">
+              IMPAR
             </h1>
+            </Link>
           </div>
 
           {/* Menu Desktop */}
           <div className="hidden md:block">
             <div className="ml-10 flex items-baseline space-x-4">
               {menuItems.map((item) => (
-                <a
-                  key={item.href}
-                  href={item.href}
-                  className="text-gray-dark hover:text-orange-primary px-3 py-2 rounded-md text-sm font-medium smooth-transition focus-visible"
+                <NavLink
+                  key={item.to}
+                  to={item.to}
+                  className={({ isActive }) => `nav-link ${isActive ? 'nav-link-active' : ''}`}
                 >
                   {item.label}
-                </a>
+                </NavLink>
               ))}
             </div>
           </div>
@@ -76,17 +79,19 @@ const Header = () => {
         {/* Menu Mobile */}
         {isMenuOpen && (
           <div className="md:hidden">
-            <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-white border-t">
+            <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-white/95 backdrop-blur-md border-t rounded-b-xl shadow-lg">
+              <div className="max-h-[70vh] overflow-y-auto">
               {menuItems.map((item) => (
-                <a
-                  key={item.href}
-                  href={item.href}
-                  className="text-gray-dark hover:text-orange-primary block px-3 py-2 rounded-md text-base font-medium smooth-transition focus-visible"
+                <NavLink
+                  key={item.to}
+                  to={item.to}
+                  className={({ isActive }) => `block nav-link ${isActive ? 'nav-link-active' : ''}`}
                   onClick={() => setIsMenuOpen(false)}
                 >
                   {item.label}
-                </a>
+                </NavLink>
               ))}
+              </div>
             </div>
           </div>
         )}

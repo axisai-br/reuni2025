@@ -29,7 +29,7 @@ const FloatingElements = () => {
   }, []);
 
   return (
-    <div className="fixed inset-0 pointer-events-none overflow-hidden z-0">
+    <div className="fixed inset-0 pointer-events-none overflow-hidden z-0 hidden md:block">
       {elements.map((element) => {
         const { id, Icon, color, left, animationDelay, animationDuration, size } = element;
         return (
@@ -48,7 +48,7 @@ const FloatingElements = () => {
         );
       })}
       
-      <style jsx>{`
+      <style>{`
         @keyframes float {
           0%, 100% {
             transform: translateY(100vh) rotate(0deg);

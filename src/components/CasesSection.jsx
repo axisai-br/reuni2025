@@ -1,6 +1,7 @@
 import { Building2, Users, TrendingUp, Award, CheckCircle, ExternalLink } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
+import bannerCases from '@/assets/images/pcdsComemorandoNaEmpresa.jpg';
 
 const CasesSection = () => {
   const cases = [
@@ -61,14 +62,15 @@ const CasesSection = () => {
   ];
 
   return (
-    <section id="casos" className="py-20 bg-white">
+    <section id="casos" className="py-20 bg-white relative overflow-hidden">
+      <div className="absolute inset-0 bg-cover bg-center opacity-5" style={{ backgroundImage: `url(${bannerCases})` }} />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-bold text-gray-dark mb-4 font-open-sans">
             <span className="text-orange-primary">Casos de Sucesso</span> Globais
           </h2>
-          <p className="text-xl text-gray-medium max-w-3xl mx-auto">
+          <p className="subtitle text-gray-medium max-w-3xl mx-auto">
             Empresas líderes mundiais que transformaram seus resultados através da inclusão de pessoas com deficiência.
           </p>
         </div>

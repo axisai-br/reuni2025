@@ -14,6 +14,21 @@ const InteractiveSection = () => {
     turnover: ''
   });
   const [calculatorResult, setCalculatorResult] = useState(null);
+  const [calculatorErrors, setCalculatorErrors] = useState({ revenue: '', employees: '', turnover: '' });
+
+  const validateCalculator = (data) => {
+    const errors = { revenue: '', employees: '', turnover: '' };
+    const rev = parseFloat(data.revenue);
+    const emp = parseInt(data.employees);
+    const tov = data.turnover === '' ? null : parseFloat(data.turnover);
+
+    if (!(rev > 0)) errors.revenue = 'Informe uma receita anual válida (> 0).';
+    if (!(emp > 0)) errors.employees = 'Informe o número de funcionários (> 0).';
+    if (tov !== null && (tov < 0 || tov > 100)) errors.turnover = 'Turnover deve estar entre 0 e 100%.';
+
+    setCalculatorErrors(errors);
+    return !errors.revenue && !errors.employees && !errors.turnover;
+  };
 
   const quizQuestions = [
     {
@@ -99,12 +114,16 @@ const InteractiveSection = () => {
   };
 
   const calculateROI = () => {
-    const revenue = parseFloat(calculatorData.revenue) || 0;
-    const employees = parseInt(calculatorData.employees) || 0;
+    if (!validateCalculator(calculatorData)) return;
 
-    const revenueIncrease = revenue * 1.6; // 1.6x mais receita (Pesquisa Empresas)
-    const profitIncrease = revenue * 2.6; // 2.6x mais lucro líquido (Pesquisa Empresas)
-    const productivityIncrease = employees * 0.25; // 25% mais produtividade (Pesquisa Empresas)
+    const revenue = parseFloat(calculatorData.revenue);
+    const employees = parseInt(calculatorData.employees);
+    const turnover = calculatorData.turnover === '' ? null : parseFloat(calculatorData.turnover);
+
+    // Premissas simplificadas baseadas em benchmarks setoriais
+    const revenueIncrease = revenue * 0.6; // +60% sobre a base (equivalente a 1.6x)
+    const profitIncrease = revenue * 1.6; // +160% sobre a base (equivalente a 2.6x)
+    const productivityIncrease = employees * 0.25 * (turnover ? (1 + (100 - Math.min(turnover, 100)) / 200) : 1); // Ajuste leve por turnover
 
     const totalBenefit = revenueIncrease + profitIncrease + productivityIncrease;
 
@@ -129,14 +148,14 @@ const InteractiveSection = () => {
           <h2 className="text-3xl md:text-4xl font-bold text-gray-dark mb-4 font-open-sans">
             <span className="text-orange-primary">Interaja</span> e Descubra
           </h2>
-          <p className="text-xl text-gray-medium max-w-3xl mx-auto">
+          <p className="subtitle text-gray-medium max-w-3xl mx-auto">
             Use nossas ferramentas interativas para avaliar sua empresa e calcular o potencial de retorno da inclusão.
           </p>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-16">
           {/* Quiz */}
-          <Card className="bg-white shadow-lg border-0">
+          <Card id="quiz" className="bg-white shadow-lg border-0">
             <CardHeader>
               <CardTitle className="flex items-center text-xl font-bold text-gray-dark">
                 <HelpCircle className="mr-2 h-6 w-6 text-orange-primary" />
@@ -207,11 +226,12 @@ const InteractiveSection = () => {
           </Card>
 
           {/* ROI Calculator */}
-          <Card className="bg-white shadow-lg border-0">
+          <Card id="calculadora" className="bg-white shadow-2xl border-2 border-orange-primary/30 ring-1 ring-orange-primary/10">
             <CardHeader>
               <CardTitle className="flex items-center text-xl font-bold text-gray-dark">
                 <Calculator className="mr-2 h-6 w-6 text-blue-support" />
                 Calculadora de ROI
+                <span className="ml-2 text-xs font-semibold text-green-support bg-green-support/10 px-2 py-0.5 rounded-full">Validado</span>
               </CardTitle>
               <p className="text-gray-medium">
                 Calcule o potencial retorno financeiro da inclusão para sua empresa.
@@ -230,8 +250,14 @@ const InteractiveSection = () => {
                       placeholder="Ex: 10000000"
                       value={calculatorData.revenue}
                       onChange={(e) => setCalculatorData({...calculatorData, revenue: e.target.value})}
+                      min="0"
+                      inputMode="numeric"
+                      pattern="[0-9]*"
                       className="focus-visible"
                     />
+                    {calculatorErrors.revenue && (
+                      <p className="text-xs text-red-600 mt-1">{calculatorErrors.revenue}</p>
+                    )}
                   </div>
                   
                   <div>
@@ -243,8 +269,14 @@ const InteractiveSection = () => {
                       placeholder="Ex: 500"
                       value={calculatorData.employees}
                       onChange={(e) => setCalculatorData({...calculatorData, employees: e.target.value})}
+                      min="1"
+                      inputMode="numeric"
+                      pattern="[0-9]*"
                       className="focus-visible"
                     />
+                    {calculatorErrors.employees && (
+                      <p className="text-xs text-red-600 mt-1">{calculatorErrors.employees}</p>
+                    )}
                   </div>
                   
                   <div>
@@ -256,20 +288,26 @@ const InteractiveSection = () => {
                       placeholder="Ex: 20"
                       value={calculatorData.turnover}
                       onChange={(e) => setCalculatorData({...calculatorData, turnover: e.target.value})}
+                      min="0"
+                      max="100"
+                      inputMode="decimal"
                       className="focus-visible"
                     />
+                    {calculatorErrors.turnover && (
+                      <p className="text-xs text-red-600 mt-1">{calculatorErrors.turnover}</p>
+                    )}
                   </div>
                   
                   <Button 
                     onClick={calculateROI}
                     className="w-full btn-primary focus-visible"
-                    disabled={!calculatorData.revenue || !calculatorData.employees}
+                    disabled={!calculatorData.revenue || !calculatorData.employees || !!calculatorErrors.revenue || !!calculatorErrors.employees || !!calculatorErrors.turnover}
                   >
                     Calcular ROI
                   </Button>
                 </div>
               ) : (
-                <div className="space-y-4">
+                <div className="space-y-4" aria-live="polite">
                   <h3 className="text-lg font-bold text-gray-dark text-center mb-4">
                     Potencial de Retorno Anual
                   </h3>
@@ -301,6 +339,22 @@ const InteractiveSection = () => {
                       <span className="text-xl font-bold">
                         R$ {calculatorResult.totalBenefit.toLocaleString('pt-BR')}
                       </span>
+                    </div>
+                  </div>
+
+                  <div className="p-4 bg-orange-primary/10 border border-orange-primary/30 rounded-lg text-center">
+                    <p className="font-semibold text-gray-dark">
+                      quer entender o segredo desse resultado? a gente te explica!
+                    </p>
+                    <div className="mt-3">
+                      <a
+                        href="https://wa.me/5549988185714"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="btn-primary inline-flex items-center px-6 py-2"
+                      >
+                        Falar no WhatsApp
+                      </a>
                     </div>
                   </div>
                   

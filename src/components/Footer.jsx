@@ -1,4 +1,5 @@
 import { Mail, Phone, MapPin, Facebook, Twitter, Linkedin, Instagram, Shield } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -31,41 +32,48 @@ const Footer = () => {
     ]
   };
 
+  const instagramUrl = 'https://www.instagram.com/unihunters?igsh=MjA0dmQyMDZnMmV4'
   const socialLinks = [
-    { icon: Facebook, href: '#', label: 'Facebook' },
-    { icon: Twitter, href: '#', label: 'Twitter' },
-    { icon: Linkedin, href: '#', label: 'LinkedIn' },
-    { icon: Instagram, href: '#', label: 'Instagram' }
+    { icon: Facebook, href: instagramUrl, label: 'Instagram' },
+    { icon: Twitter, href: instagramUrl, label: 'Instagram' },
+    { icon: Linkedin, href: instagramUrl, label: 'Instagram' },
+    { icon: Instagram, href: instagramUrl, label: 'Instagram' }
   ];
 
   return (
-    <footer className="bg-gray-dark text-white">
+    <footer className="text-white bg-gradient-to-b from-gray-900 via-gray-950 to-black">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Main Footer Content */}
         <div className="py-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-8">
           {/* Company Info */}
           <div className="lg:col-span-2">
             <h3 className="text-2xl font-bold text-orange-primary mb-4 font-open-sans">
-              Inclusão PCD
+              IMPAR
             </h3>
-            <p className="text-gray-300 mb-6 text-sm leading-relaxed">
+            <p className="text-gray-200 mb-6 text-sm leading-relaxed">
               Transformamos empresas através da inclusão de pessoas com deficiência, 
               gerando valor social e econômico sustentável para todos os stakeholders.
             </p>
             
             {/* Contact Info */}
             <div className="space-y-3">
-              <div className="flex items-center text-sm text-gray-300">
+              <div className="flex items-center text-sm text-gray-200">
                 <Mail className="h-4 w-4 mr-3 text-orange-primary flex-shrink-0" />
                 contato@inclusaopcd.com.br
               </div>
-              <div className="flex items-center text-sm text-gray-300">
+              <a
+                href="https://wa.me/5549988185714"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center text-sm text-gray-200 hover:text-orange-primary transition-colors"
+                aria-label="Fale pelo WhatsApp"
+              >
                 <Phone className="h-4 w-4 mr-3 text-orange-primary flex-shrink-0" />
-                (11) 3000-0000
-              </div>
-              <div className="flex items-center text-sm text-gray-300">
+                +55 49 98818-5714 (WhatsApp)
+              </a>
+              <div className="flex items-center text-sm text-gray-200">
                 <MapPin className="h-4 w-4 mr-3 text-orange-primary flex-shrink-0" />
-                São Paulo, SP - Brasil
+                Caçador, SC - Brasil
               </div>
             </div>
           </div>
@@ -92,12 +100,28 @@ const Footer = () => {
             <ul className="space-y-2">
               {footerLinks.servicos.map((link, index) => (
                 <li key={index}>
-                  <a 
-                    href={link.href} 
-                    className="text-sm text-gray-300 hover:text-orange-primary transition-colors duration-200 focus-visible"
-                  >
-                    {link.name}
-                  </a>
+                  {link.name === 'Diagnóstico de Inclusão' ? (
+                    <Link 
+                      to="/contato" 
+                      className="text-sm text-gray-300 hover:text-orange-primary transition-colors duration-200 focus-visible"
+                    >
+                      {link.name}
+                    </Link>
+                  ) : link.name === 'Desenvolvimento de Lideranças' ? (
+                    <Link 
+                      to="/metodologia" 
+                      className="text-sm text-gray-300 hover:text-orange-primary transition-colors duration-200 focus-visible"
+                    >
+                      {link.name}
+                    </Link>
+                  ) : (
+                    <a 
+                      href={link.href} 
+                      className="text-sm text-gray-300 hover:text-orange-primary transition-colors duration-200 focus-visible"
+                    >
+                      {link.name}
+                    </a>
+                  )}
                 </li>
               ))}
             </ul>
@@ -108,12 +132,21 @@ const Footer = () => {
             <ul className="space-y-2">
               {footerLinks.recursos.map((link, index) => (
                 <li key={index}>
-                  <a 
-                    href={link.href} 
-                    className="text-sm text-gray-300 hover:text-orange-primary transition-colors duration-200 focus-visible"
-                  >
-                    {link.name}
-                  </a>
+                  {link.name === 'Casos de Sucesso' ? (
+                    <Link 
+                      to="/casos" 
+                      className="text-sm text-gray-300 hover:text-orange-primary transition-colors duration-200 focus-visible"
+                    >
+                      {link.name}
+                    </Link>
+                  ) : (
+                    <a 
+                      href={link.href} 
+                      className="text-sm text-gray-300 hover:text-orange-primary transition-colors duration-200 focus-visible"
+                    >
+                      {link.name}
+                    </a>
+                  )}
                 </li>
               ))}
             </ul>
@@ -137,7 +170,7 @@ const Footer = () => {
         </div>
 
         {/* Newsletter Signup */}
-        <div className="py-8 border-t border-gray-600">
+        <div className="py-8 border-t border-white/10">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
             <div>
               <h4 className="font-semibold text-white mb-2">
@@ -152,7 +185,7 @@ const Footer = () => {
               <input
                 type="email"
                 placeholder="Seu melhor email"
-                className="flex-1 px-4 py-2 bg-gray-600 border border-gray-500 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-orange-primary focus:border-transparent"
+                className="flex-1 px-4 py-2 bg-white/10 border border-white/20 rounded-lg text-white placeholder-gray-300 focus:outline-none focus:ring-2 focus:ring-orange-primary focus:border-transparent"
               />
               <button className="px-6 py-2 bg-orange-primary text-white rounded-lg hover:bg-orange-primary/90 transition-colors duration-200 font-medium focus-visible">
                 Inscrever-se
@@ -162,11 +195,11 @@ const Footer = () => {
         </div>
 
         {/* Bottom Footer */}
-        <div className="py-6 border-t border-gray-600">
+        <div className="py-6 border-t border-white/10">
           <div className="flex flex-col lg:flex-row justify-between items-center gap-4">
             {/* Copyright */}
             <div className="text-sm text-gray-300">
-              © {currentYear} Inclusão PCD. Todos os direitos reservados.
+              © {currentYear} IMPAR. Todos os direitos reservados.
             </div>
 
             {/* Social Links */}
@@ -196,7 +229,7 @@ const Footer = () => {
         </div>
 
         {/* Accessibility Statement */}
-        <div className="py-4 border-t border-gray-600">
+        <div className="py-4 border-t border-white/10">
           <div className="text-center">
             <p className="text-xs text-gray-400">
               Este site foi desenvolvido seguindo as diretrizes de acessibilidade WCAG 2.1 nível AA. 
@@ -210,4 +243,3 @@ const Footer = () => {
 };
 
 export default Footer;
-

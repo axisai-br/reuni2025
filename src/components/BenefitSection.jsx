@@ -12,7 +12,7 @@ const BenefitSection = () => {
               O Benefício que Transforma 
               <span className="text-orange-primary"> Pequenas e Médias Empresas</span>
             </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+          <p className="subtitle text-gray-600 max-w-3xl mx-auto">
               Nossa metodologia de desenvolvimento de carreira inclusiva é especialmente desenhada 
               para empresas de pequeno e médio porte, gerando resultados mensuráveis e sustentáveis.
             </p>
@@ -26,10 +26,10 @@ const BenefitSection = () => {
             <div className="bg-white rounded-xl shadow-lg p-8 border-l-4 border-orange-primary">
               <div className="flex items-center mb-6">
                 <Zap className="h-8 w-8 text-orange-primary mr-3" />
-                <h3 className="text-2xl font-bold text-gray-900">Pequenas Empresas (10-99 funcionários)</h3>
+                <h3 className="text-2xl font-bold text-gray-900"> Empresas que querem se tornar referencia no mercado valorizam a inclusão </h3>
               </div>
               <p className="text-gray-600 mb-6">
-                Construa uma cultura inclusiva desde o início e prepare-se para crescer de forma sustentável.
+                Aplique nossa metodologia inclusiva desde o início e prepare-se para crescer de forma sustentável.
               </p>
               <ul className="space-y-3">
                 <li className="flex items-start">
@@ -38,15 +38,15 @@ const BenefitSection = () => {
                 </li>
                 <li className="flex items-start">
                   <CheckCircle className="h-5 w-5 text-green-500 mr-3 mt-0.5 flex-shrink-0" />
-                  <span className="text-gray-700">Treinamentos focados em lideranças emergentes</span>
+                  <span className="text-gray-700">Treinamentos focados em lideranças emergentes e planos de carreira que fazem sentido para a inclusão</span>
                 </li>
                 <li className="flex items-start">
                   <CheckCircle className="h-5 w-5 text-green-500 mr-3 mt-0.5 flex-shrink-0" />
-                  <span className="text-gray-700">Mentoria para primeiros colaboradores PCD</span>
+                  <span className="text-gray-700">Levantar resultados através das pesquisas aplicadas dentro da metodologia</span>
                 </li>
                 <li className="flex items-start">
                   <CheckCircle className="h-5 w-5 text-green-500 mr-3 mt-0.5 flex-shrink-0" />
-                  <span className="text-gray-700">Políticas de RH inclusivas desde o início</span>
+                  <span className="text-gray-700">Políticas de RH e Gestão inclusivas desde o início</span>
                 </li>
               </ul>
             </div>

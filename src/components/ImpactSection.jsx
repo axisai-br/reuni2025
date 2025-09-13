@@ -1,5 +1,6 @@
 import { TrendingUp, Users, DollarSign, Award, Target, Zap } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import bannerImpact from '@/assets/images/grupoPessoasPcd.jpg';
 
 const ImpactSection = () => {
   const impactData = [
@@ -48,14 +49,15 @@ const ImpactSection = () => {
   ];
 
   return (
-    <section id="impacto" className="py-20 bg-gray-light">
+    <section id="impacto" className="py-20 bg-gray-light relative overflow-hidden">
+      <div className="absolute inset-0 bg-cover bg-center opacity-5" style={{ backgroundImage: `url(${bannerImpact})` }} />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-bold text-gray-dark mb-4 font-open-sans">
             O <span className="text-orange-primary">Impacto Real</span> da Inclusão
           </h2>
-          <p className="text-xl text-gray-medium max-w-3xl mx-auto">
+          <p className="subtitle text-gray-medium max-w-3xl mx-auto">
             Dados comprovados mostram que a inclusão de pessoas com deficiência não é apenas 
             uma questão social, mas uma estratégia de negócios altamente lucrativa.
           </p>

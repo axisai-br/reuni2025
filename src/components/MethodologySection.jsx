@@ -90,7 +90,7 @@ const MethodologySection = () => {
               Nossa <span className="text-orange-primary">Metodologia</span> de 
               <span className="text-blue-primary"> Transformação</span>
             </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+            <p className="subtitle text-gray-600 max-w-3xl mx-auto">
               Um processo estruturado em 4 fases que garante resultados mensuráveis 
               e sustentáveis para empresas de pequeno e médio porte.
             </p>

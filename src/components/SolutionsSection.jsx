@@ -2,6 +2,7 @@ import { GraduationCap, Users, Accessibility, Handshake, CheckCircle, ArrowRight
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import ScrollReveal from './ScrollReveal';
+import bannerSolutions from '@/assets/images/cadeiranteTrabalhandoEscritorio.jpg';
 
 const SolutionsSection = () => {
   const benefits = [
@@ -101,22 +102,41 @@ const SolutionsSection = () => {
   ];
 
   return (
-    <section id="beneficios" className="py-20 bg-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="metodologia" className="py-20 bg-white relative overflow-hidden">
+      <div className="absolute inset-0 bg-cover bg-center opacity-5" style={{ backgroundImage: `url(${bannerSolutions})` }} />
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
         {/* Header */}
         <ScrollReveal direction="up" delay={0.2}>
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-dark mb-4 font-open-sans">
-              O <span className="text-orange-primary">Benefício</span> que Transforma sua Empresa
+              Metodologia <span className="text-orange-primary">IMPAR</span>
             </h2>
-            <p className="text-xl text-gray-medium max-w-3xl mx-auto">
-              Nossa solução vai além do compliance, capacitando sua empresa a reter, desenvolver e 
-              promover talentos PCD, gerando impacto real e mensurável.
+            <p className="subtitle text-gray-medium max-w-3xl mx-auto">
+              Como transformamos inclusão em performance: diagnóstico, plano de ação, capacitação, mentoria e acompanhamento com dados.
             </p>
           </div>
         </ScrollReveal>
 
-        {/* Benefits Grid */}
+        {/* Como funciona: etapas */}
+        <ScrollReveal direction="up" delay={0.3}>
+          <div className="grid grid-cols-1 md:grid-cols-5 gap-4 mb-16">
+            {[
+              { title: 'Diagnóstico', desc: 'Mapa de maturidade e prioridades', color: 'text-orange-primary' },
+              { title: 'Plano de Ação', desc: 'Objetivos, responsáveis e prazos', color: 'text-blue-support' },
+              { title: 'Capacitação', desc: 'Treinamentos práticos e aplicados', color: 'text-green-support' },
+              { title: 'Mentoria', desc: 'Apoio contínuo para líderes e PCDs', color: 'text-orange-primary' },
+              { title: 'Acompanhamento', desc: 'Métricas e melhoria contínua', color: 'text-blue-support' },
+            ].map((step, i) => (
+              <div key={i} className="bg-white border border-gray-200 rounded-xl p-4 text-center card-hover">
+                <div className={`text-sm font-semibold ${step.color} mb-1`}>Etapa {i + 1}</div>
+                <div className="font-bold text-gray-dark">{step.title}</div>
+                <div className="text-sm text-gray-medium">{step.desc}</div>
+              </div>
+            ))}
+          </div>
+        </ScrollReveal>
+
+        {/* Benefícios da metodologia */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
           {benefits.map((benefit, index) => {
             const IconComponent = benefit.icon;
@@ -136,7 +156,7 @@ const SolutionsSection = () => {
                   </CardHeader>
                   
                   <CardContent>
-                    <h4 className="font-semibold text-gray-dark mb-3">O que sua empresa ganha:</h4>
+                    <h4 className="font-semibold text-gray-dark mb-3">Como aplicamos na prática:</h4>
                     <ul className="space-y-2">
                       {benefit.details.map((detail, idx) => (
                         <li key={idx} className="flex items-start text-sm text-gray-medium">

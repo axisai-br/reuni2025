@@ -1,5 +1,6 @@
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, PieChart, Pie, Cell } from 'recharts';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import bannerData from '@/assets/images/pcdsTrabalhando.jpg';
 import { Building2, Users, Clock, TrendingDown } from 'lucide-react';
 import ScrollReveal from './ScrollReveal';
 import AnimatedCounter from './AnimatedCounter';
@@ -60,15 +61,16 @@ const DataSection = () => {
   };
 
   return (
-    <section id="dados" className="py-20 section-bg-gradient">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="dados" className="py-20 section-bg-gradient relative overflow-hidden">
+      <div className="absolute inset-0 bg-cover bg-center opacity-5" style={{ backgroundImage: `url(${bannerData})` }} />
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
         {/* Header */}
         <ScrollReveal direction="up">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-dark mb-4 font-open-sans">
               <span className="text-orange-primary">Dados</span> do Mercado Brasileiro
             </h2>
-            <p className="text-xl text-gray-medium max-w-3xl mx-auto">
+            <p className="subtitle text-gray-medium max-w-3xl mx-auto">
               Análise detalhada baseada em pesquisas com empresas e profissionais PCDs no Brasil.
             </p>
           </div>

@@ -1,6 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700&display=swap');
 @import "tailwindcss";
 @import "tw-animate-css";
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700&display=swap');
 
 @custom-variant dark (&:is(.dark *));
 
@@ -135,9 +135,10 @@
   * {
     @apply border-border outline-ring/50;
   }
-  body {
-    @apply bg-background text-foreground;
-  }
+body {
+  @apply bg-background text-foreground overflow-x-hidden;
+  scroll-behavior: smooth;
+}
 }
 
 /* Modern and professional typography */
@@ -304,12 +305,12 @@
 /* Enhanced hero section */
 .hero-overlay {
   background: linear-gradient(
-    135deg,
-    rgba(17, 24, 39, 0.9) 0%,
-    rgba(255, 140, 0, 0.15) 50%,
-    rgba(17, 24, 39, 0.85) 100%
+    180deg,
+    rgba(15, 23, 42, 0.75) 0%,
+    rgba(2, 6, 23, 0.78) 35%,
+    rgba(2, 6, 23, 0.85) 100%
   );
-  backdrop-filter: blur(1px);
+  backdrop-filter: blur(2px);
 }
 .hero-content {
   position: relative;
@@ -421,9 +422,9 @@
 
 /* Enhanced stats design */
 .stat-card {
-  background: rgba(255, 255, 255, 0.1);
+  background: rgba(0, 0, 0, 0.25);
   backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.25);
   border-radius: var(--radius-xl);
   padding: clamp(1.5rem, 3vw, 2rem);
   text-align: center;
@@ -496,6 +497,85 @@
 }
 .section-bg-gradient {
   background: linear-gradient(135deg, var(--gray-light) 0%, var(--white-bg) 50%, var(--gray-lighter) 100%);
+}
+
+/* Safe area utilities for mobile notches */
+.pt-safe { padding-top: max(env(safe-area-inset-top), 0px); }
+.pb-safe { padding-bottom: max(env(safe-area-inset-bottom), 0px); }
+.pl-safe { padding-left: max(env(safe-area-inset-left), 0px); }
+.pr-safe { padding-right: max(env(safe-area-inset-right), 0px); }
+
+/* Mobile media defaults */
+img, video, canvas, svg { max-width: 100%; height: auto; }
+.break-anywhere { overflow-wrap: anywhere; word-break: break-word; }
+
+/* Safe fixed offsets */
+.bottom-safe { bottom: calc(1.5rem + env(safe-area-inset-bottom)); }
+.right-safe { right: calc(1.5rem + env(safe-area-inset-right)); }
+.left-safe { left: calc(1.5rem + env(safe-area-inset-left)); }
+
+/* Improve tap experience */
+* { -webkit-tap-highlight-color: transparent; }
+
+/* Modern visual refresh */
+.bg-hero {
+  background:
+    radial-gradient(1200px 600px at 10% -10%, rgba(255,140,0,0.12), transparent 60%),
+    radial-gradient(800px 400px at 100% 10%, rgba(2,136,209,0.10), transparent 60%),
+    linear-gradient(180deg, var(--white-bg) 0%, var(--gray-light) 100%);
+}
+
+.nav-link { 
+  color: var(--gray-700);
+  padding: 0.5rem 0.75rem; 
+  border-radius: 0.5rem; 
+  transition: all .2s ease; 
+}
+.nav-link:hover { color: var(--orange-primary); background: rgba(255,140,0,0.06); }
+.nav-link-active { color: var(--orange-primary); background: rgba(255,140,0,0.10); }
+
+.card-hover { 
+  transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease; 
+}
+.card-hover:hover { 
+  transform: translateY(-6px); 
+  box-shadow: var(--shadow-xl); 
+  border-color: var(--orange-primary-subtle);
+}
+
+/* Tour highlight */
+.tour-highlight {
+  position: relative;
+  outline: 3px solid rgba(255,140,0,0.8);
+  outline-offset: 2px;
+  border-radius: 12px;
+  animation: tourGlow 1.2s ease-in-out 0s 2 alternate;
+}
+
+/* Subtitles (smaller, readable on mobile) */
+.subtitle {
+  font-size: clamp(0.98rem, 2.2vw, 1.125rem);
+  line-height: 1.6;
+  font-weight: 400;
+}
+
+/* Marquee carousel (right-to-left conveyor) */
+.marquee { position: relative; overflow: hidden; }
+.marquee-track {
+  display: flex; gap: clamp(0.75rem, 2vw, 1rem);
+  width: max-content;
+  animation: marquee-scroll 24s linear infinite;
+  will-change: transform;
+}
+.marquee:hover .marquee-track { animation-play-state: paused; }
+.marquee-item { flex: 0 0 auto; width: clamp(180px, 26vw, 260px); }
+@keyframes marquee-scroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+@keyframes tourGlow {
+  from { box-shadow: 0 0 0 0 rgba(255,140,0,0.5); }
+  to { box-shadow: 0 0 0 12px rgba(255,140,0,0); }
 }
 
 /* Modern chart design */

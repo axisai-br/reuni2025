@@ -1,6 +1,7 @@
 import { Quote, ExternalLink, Award, BookOpen, TrendingUp } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import ScrollReveal from './ScrollReveal';
+import bannerValidation from '@/assets/images/cadeiranteOlhandoParaCamera.jpg';
 
 const ValidationSection = () => {
   const validations = [
@@ -63,8 +64,9 @@ const ValidationSection = () => {
   ];
 
   return (
-    <section className="py-20 bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 text-white">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="py-20 bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 text-white relative overflow-hidden">
+      <div className="absolute inset-0 bg-cover bg-center opacity-10" style={{ backgroundImage: `url(${bannerValidation})` }} />
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative">
         {/* Título da Seção */}
         <ScrollReveal direction="up" delay={0.2}>
           <div className="text-center mb-16">
@@ -72,7 +74,7 @@ const ValidationSection = () => {
               Metodologia <span className="text-orange-primary">Validada</span> por 
               <span className="text-blue-primary"> Instituições Renomadas</span>
             </h2>
-            <p className="text-xl text-gray-300 max-w-3xl mx-auto">
+            <p className="subtitle text-gray-300 max-w-3xl mx-auto">
               Nossa abordagem é fundamentada em pesquisas e insights das principais 
               instituições acadêmicas e publicações de negócios do mundo.
             </p>
