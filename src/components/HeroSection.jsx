@@ -23,10 +23,10 @@ const HeroSection = () => {
       </div>
 
       {/* Content */}
-      <div className="hero-content section-spacing">
+      <div className="hero-content section-spacing pt-16 sm:pt-24">
         <ScrollReveal direction="up" delay={0.2}>
           <div className="mb-6 text-center">
-            <span className="inline-flex items-center px-4 py-2 rounded-full bg-white/20 text-white text-sm font-medium backdrop-blur-sm mb-4 shadow-sm border border-white/30">
+            <span className="inline-flex items-center px-4 py-2 rounded-full bg-white/20 text-white text-sm font-medium backdrop-blur-sm mt-6 mb-4 shadow-sm border border-white/30">
               <Award className="w-4 h-4 mr-2" />
               Metodologia Validada por MIT, Harvard & Forbes
             </span>
